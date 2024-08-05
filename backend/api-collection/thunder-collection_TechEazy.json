@@ -1,0 +1,154 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "TechEazy",
+    "collectionId": "a2ff881b-42ed-4047-9b27-4ce81c97e9df",
+    "dateExported": "2024-08-05T21:53:05.084Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "7912a0c8-15ff-47b9-a1db-ed6cbe03740f",
+            "name": "Student",
+            "containerId": "",
+            "created": "2024-08-03T18:28:28.317Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "0fe728e4-71a6-4920-af57-263e8e59bdf2",
+            "name": "Subject",
+            "containerId": "",
+            "created": "2024-08-03T18:31:04.753Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "ec773cf8-82a9-4b28-ba10-ddc1b154220f",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2024-08-05T20:30:50.097Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "aaedad8d-8174-4f2e-8d7b-dafb0a47955b",
+            "colId": "a2ff881b-42ed-4047-9b27-4ce81c97e9df",
+            "containerId": "7912a0c8-15ff-47b9-a1db-ed6cbe03740f",
+            "name": "getAllStudent",
+            "url": "localhost:8080/api/student",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-08-03T18:28:49.965Z",
+            "modified": "2024-08-05T21:51:17.454Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer 74c54a3f-a867-4b49-b3c8-f813a4eb3fb3"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ]
+        },
+        {
+            "_id": "e95a0912-d6aa-4cfa-90e7-08a17945fb46",
+            "colId": "a2ff881b-42ed-4047-9b27-4ce81c97e9df",
+            "containerId": "7912a0c8-15ff-47b9-a1db-ed6cbe03740f",
+            "name": "createStudent",
+            "url": "localhost:8080/api/student",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-08-03T18:29:03.993Z",
+            "modified": "2024-08-05T21:51:27.115Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer 74c54a3f-a867-4b49-b3c8-f813a4eb3fb3"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Nasir Rabbani\",\n  \"address\": \"Punet\",\n  \"email\": \"nasir@gmail.com\",\n  \"password\": \"pass123\",\n  \"role\": \"student\",\n  \"subject_ids\":[1,2]\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "fc1e94bf-11cb-4f74-9262-a335b8507b27",
+            "colId": "a2ff881b-42ed-4047-9b27-4ce81c97e9df",
+            "containerId": "0fe728e4-71a6-4920-af57-263e8e59bdf2",
+            "name": "getAllSubject",
+            "url": "localhost:8080/api/subject",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-08-03T18:31:40.045Z",
+            "modified": "2024-08-05T21:51:35.539Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer 74c54a3f-a867-4b49-b3c8-f813a4eb3fb3"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ]
+        },
+        {
+            "_id": "688023f1-a0ce-4b0d-83b0-5958a366e56b",
+            "colId": "a2ff881b-42ed-4047-9b27-4ce81c97e9df",
+            "containerId": "0fe728e4-71a6-4920-af57-263e8e59bdf2",
+            "name": "createSubject",
+            "url": "localhost:8080/api/subject",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-08-03T18:31:56.335Z",
+            "modified": "2024-08-05T21:52:24.337Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer 74c54a3f-a867-4b49-b3c8-f813a4eb3fb3"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"name\": \"Hindi\"\n  },\n  {\n    \"name\": \"urdu\"\n  }\n]",
+                "form": []
+            }
+        },
+        {
+            "_id": "f61878b9-97ed-4b17-a31d-40be12addbb5",
+            "colId": "a2ff881b-42ed-4047-9b27-4ce81c97e9df",
+            "containerId": "ec773cf8-82a9-4b28-ba10-ddc1b154220f",
+            "name": "Login",
+            "url": "localhost:8080/api/auth/login",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-08-05T20:30:59.304Z",
+            "modified": "2024-08-05T21:52:41.560Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"nasir@gmail.com\",\n  \"password\":\"pass123\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "dsZ5kUdSo9WnzscPsTjegJ-g3MuilTbqvuV63-Tm4gNnX36c8g9ikzzgei_ystGYd3NGe72mnhBqqjeUOUKH5Q"
+}

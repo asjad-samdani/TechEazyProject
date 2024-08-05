@@ -15,7 +15,7 @@ import com.example.backend.entity.SubjectEntity;
 import com.example.backend.service.impl.SubjectServiceImp;
 
 @RestController
-@RequestMapping("/subject")
+@RequestMapping("/api/subject")
 public class SubjectController {
 
     @Autowired

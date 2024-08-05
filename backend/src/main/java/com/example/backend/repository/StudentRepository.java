@@ -7,4 +7,6 @@ import com.example.backend.entity.StudentEntity;
 
 @Repository
 public interface StudentRepository extends JpaRepository<StudentEntity, Integer> {
+
+    StudentEntity findByEmail(String email);
 }

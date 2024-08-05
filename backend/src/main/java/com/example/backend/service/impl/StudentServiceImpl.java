@@ -2,6 +2,9 @@ package com.example.backend.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.backend.dto.StudentDTO;
@@ -33,8 +36,11 @@ public class StudentServiceImpl implements StudentService {
     // }
 
     @Override
-    public StudentDTO createStudent(StudentRequestDTO req) {
+    public StudentDTO createStudent(StudentRequestDTO req) throws BadRequestException {
 
+        if (Objects.equals(req.getRole(), "admin") && req.getSubject_ids().size() > 0) {
+            throw new BadRequestException("Admin cannot be enrolled for subjects");
+        }
         // create the student -> student id
         StudentEntity studententity = req.toStudentEntity();
 
