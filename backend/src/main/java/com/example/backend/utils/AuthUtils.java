@@ -4,7 +4,11 @@ import java.io.IOException;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.example.backend.dto.ResponseDTO;
 import com.example.backend.service.impl.AuthServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,21 +29,27 @@ public class AuthUtils extends OncePerRequestFilter {
             @NonNull FilterChain filterChain)
             throws ServletException, IOException {
 
+        response.setContentType("application/json");
         String authHeader = request.getHeader("Authorization");
+        ResponseDTO resp = new ResponseDTO();
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write("Unauthorized");
+            resp.setMessage("Unauthorized");
+
+            String respStr = new ObjectMapper().writeValueAsString(resp);
+            response.getWriter().write(respStr);
             return;
         }
 
         // Extract the token from the header
         String token = authHeader.substring(7);
-
         // Validate the token (this is just a placeholder, implement your logic)
         if (!validateToken(token)) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write("Invalid token");
+            resp.setMessage("Invalid token");
+            String respStr = new ObjectMapper().writeValueAsString(resp);
+            response.getWriter().write(respStr);
             return;
         }
 
@@ -49,7 +59,7 @@ public class AuthUtils extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(@NonNull HttpServletRequest request) throws ServletException {
-        if (request.getRequestURI().contains("login")) {
+        if (request.getRequestURI().contains("auth")) {
             return true;
         }
         return false;

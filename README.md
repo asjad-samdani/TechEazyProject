@@ -14,7 +14,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Database Schema (Er Diagram)
 
-![TechEasy ER Diagram](TechEasy%20ER%20Diagram.jpg)
+![TechEasy ER Diagram](TechEasyERDiagram.png)
 
 ## Database Schema
 
@@ -22,13 +22,15 @@ This section provides an overview of the database schema used in the project.
 
 ### Tables
 
-#### 1. `Student`
+#### 1. `User (Student)`
 
-| Field     | Type         | Description                 |
-| --------- | ------------ | --------------------------- |
-| `id`      | INT          | Primary Key, Auto Increment |
-| `name`    | VARCHAR(255) | Student's name              |
-| `address` | VARCHAR(255) | Student's Address           |
+| Field      | Type         | Description                 |
+| ---------- | ------------ | --------------------------- |
+| `id`       | INT          | Primary Key, Auto Increment |
+| `name`     | VARCHAR(255) | User's name                 |
+| `address`  | VARCHAR(255) | User's Address              |
+| `email`    | VARCHAR(255) | User's Email                |
+| `password` | VARCHAR(255) | User's Password             |
 
 #### 2. `Enrollment`
 
@@ -48,7 +50,6 @@ This section provides an overview of the database schema used in the project.
 ### Relationships
 
 - A `student` can have multiple `subject`.
-- A `subject` can have only one `Student`.
 
 ## Setup
 
@@ -70,20 +71,7 @@ Open the project in your preferred IDE. If you're using an IDE that supports Mav
 mvn clean install
 ```
 
-### 4. Configure Database
-
-Settings in the application.properties file located in the src/main/resources directory.
-
-```spring.application.name=backend
-spring.datasource.url=jdbc:sqlite:techeazy.db
-spring.datasource.driver-class-name=org.sqlite.JDBC
-spring.jpa.show-sql=true
-spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
-spring.jpa.hibernate.ddl-auto=update
-
-```
-
-### 5. Run the Project
+### 4. Run the Project
 
 ### Using IDE
 
@@ -99,42 +87,99 @@ spring.jpa.hibernate.ddl-auto=update
 mvn spring-boot:run
 ```
 
-### 6. API Endpoints
+## API Endpoints
 
-## List of Api EndPoint
+### 1. For User/Student (Requires Authentication)
 
-### For Student
+- `GET  - /api/student` - Retrieves Students
 
-- `GET -api/student` - Retrieves All Student
+```sh
+curl -X GET http://localhost:8080/api/student \
+ --header 'Authorization: Bearer 74c54a3f-a867-4b49-b3c8-f813a4eb3fb3'
+```
+
+> Note : Admin can see all the users data but a Student can see only his data
 
 - `POST -/api/student` - Creates Student
 
 ```sh
-curl -X GET http://localhost:8080/api/student
+curl  -X POST \
+  'localhost:8080/api/student' \
+  --header 'Accept: */*' \
+  --header 'Authorization: Bearer 74c54a3f-a867-4b49-b3c8-f813a4eb3fb3' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+  "name": "John Doe",
+  "address": "Pune",
+  "email": "john@gmail.com",
+  "password": "pass123",
+  "role": "student",
+  "subject_ids":[1,2]
+}'
 ```
 
-```sh
-curl -X POST http://localhost:8080/api/student
-```
+> Note : Only Admins can create a Student type user
 
-### For Subject
+### For Subject (Requires Authentication)
 
 - ` GET -/api/subject` - Retrieves All Subject
+
+```sh
+curl  -X GET \
+  'localhost:8080/api/subject' \
+  --header 'Accept: */*' \
+  --header 'Authorization: Bearer d18ee700-4718-4941-9d39-ef7836fce549'
+```
+
+> Note : Only Admins can Retreives subjects
 
 - `POST -/api/subject`- Creates subject
 
 ```sh
-curl -X GET http://localhost:8080/api/subject
+curl  -X POST \
+  'localhost:8080/api/subject' \
+  --header 'Accept: */*' \
+  --header 'Authorization: Bearer 74c54a3f-a867-4b49-b3c8-f813a4eb3fb3' \
+  --header 'Content-Type: application/json' \
+  --data-raw '[
+  {
+    "name": "Computer Graphics"
+  },
+  {
+    "name": "DBMS"
+  }
+]'
 ```
 
+> Note : Only Admins can create subjects
+
+### Auth (No Authentication)
+
+- `POST - /api/auth/login` - To login and generate token
+
 ```sh
-curl -X POST http://localhost:8080/api/subject
+curl  -X POST \
+  'localhost:8080/api/auth/login' \
+  --header 'Accept: */*' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+  "email":"john@gmail.com",
+  "password":"pass123"
+}'
 ```
 
-### Login Auth
-
-- GET/api/auth/login
+- `POST - /api/auth/register` - To register an admin user
 
 ```sh
-curl -X GET http://localhost:8080/api/auth/login
+curl  -X POST \
+  'localhost:8080/api/auth/register' \
+  --header 'Accept: */*' \
+  --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+  "name": "John Admin",
+  "address": "Pune",
+  "email": "john_admin@gmail.com",
+  "password": "iamadmin123"
+}'
 ```

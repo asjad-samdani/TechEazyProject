@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class StudentDTO {
+public class UserDTO {
     int id;
     String name;
     String address;

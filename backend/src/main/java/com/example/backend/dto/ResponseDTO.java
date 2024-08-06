@@ -10,17 +10,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ResponseDTO {
-    String errorMessage;
-    Integer code;
+    String message;
     Object data;
 
-    public ResponseDTO setErrorMessage(String msg) {
-        this.errorMessage = msg;
-        return this;
-    }
-
-    public ResponseDTO setCode(Integer code) {
-        this.code = code;
+    public ResponseDTO setMessage(String msg) {
+        this.message = msg;
         return this;
     }
 

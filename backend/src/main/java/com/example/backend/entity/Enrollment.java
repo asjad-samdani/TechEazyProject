@@ -26,9 +26,9 @@ public class Enrollment {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student.id")
+    @JoinColumn(name = "user.id")
     @JsonIgnore
-    private StudentEntity student;
+    private UserEntity user;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "subject.id")

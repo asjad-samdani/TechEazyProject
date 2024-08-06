@@ -18,14 +18,4 @@ public class AuthConfig {
         return registrationBean;
     }
 
-    // @Bean
-    // public FilterRegistrationBean<LoggingFilter>
-    // loggingFilterRegistration(LoggingService loggingService) {
-    // FilterRegistrationBean<LoggingFilter> registrationBean = new
-    // FilterRegistrationBean<>();
-    // registrationBean.setFilter(new LoggingFilter(loggingService));
-    // registrationBean.addUrlPatterns("/*");
-    // return registrationBean;
-    // }
-
 }
