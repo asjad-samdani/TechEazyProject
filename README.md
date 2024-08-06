@@ -50,10 +50,6 @@ This section provides an overview of the database schema used in the project.
 - A `student` can have multiple `subject`.
 - A `subject` can have only one `Student`.
 
-### ER Diagram
-
-If you have an Entity-Relationship Diagram (ERD), you can include it here. If not, you can describe the relationships textually.
-
 ## Setup
 
 ### 1. Clone the Repository
@@ -66,21 +62,38 @@ git clone https://github.com/asjad-samdani/TechEazyProject.git
 
 ### 2. Open the Project
 
+Open the project in your preferred IDE. If you're using an IDE that supports Maven or Gradle, it should automatically detect the build file and import the project.
+
 ### 3. Build the Project
 
-### 4. Configure Database (if applicable)
+```sh
+mvn clean install
+```
+
+### 4. Configure Database
 
 Settings in the application.properties file located in the src/main/resources directory.
 
-```spring.datasource.url=jdbc:mysql://localhost:3306/yourdatabase
-spring.datasource.username=yourusername
-spring.datasource.password=yourpassword
+```spring.application.name=backend
+spring.datasource.url=jdbc:sqlite:techeazy.db
+spring.datasource.driver-class-name=org.sqlite.JDBC
+spring.jpa.show-sql=true
+spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
 spring.jpa.hibernate.ddl-auto=update
+
 ```
 
 ### 5. Run the Project
 
-Maven
+### Using IDE
+
+- Locate the main class containing the public static void main(String[] args) method.
+
+- Right-click on the file and select Run.
+  Using Command Line
+  Navigate to the project directory and run the following command:
+
+### Using Command Line
 
 ```
 mvn spring-boot:run
@@ -88,20 +101,40 @@ mvn spring-boot:run
 
 ### 6. API Endpoints
 
-List of Api EndPoint
+## List of Api EndPoint
 
 ### For Student
 
-- GET api/student - Retrieves All Student
+- `GET -api/student` - Retrieves All Student
 
-- POST /api/student - Creates Student
+- `POST -/api/student` - Creates Student
+
+```sh
+curl -X GET http://localhost:8080/api/student
+```
+
+```sh
+curl -X POST http://localhost:8080/api/student
+```
 
 ### For Subject
 
-- GET/api/subject - Retrieves All Subject
+- ` GET -/api/subject` - Retrieves All Subject
 
-- POST/api/subject - Creates subject
+- `POST -/api/subject`- Creates subject
+
+```sh
+curl -X GET http://localhost:8080/api/subject
+```
+
+```sh
+curl -X POST http://localhost:8080/api/subject
+```
 
 ### Login Auth
 
 - GET/api/auth/login
+
+```sh
+curl -X GET http://localhost:8080/api/auth/login
+```
