@@ -52,11 +52,9 @@ public class StudentServiceImpl implements StudentService {
         for (Integer subjectId : req.getSubject_ids()) {
             Enrollment enrollment = new Enrollment();
             enrollment.setStudent(studententity);
-
             SubjectEntity subject = new SubjectEntity();
             subject.setId(subjectId);
             enrollment.setSubject(subject);
-
             enrollments.add(enrollment);
         }
 

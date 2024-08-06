@@ -27,4 +27,16 @@ public class StudentRequestDTO {
         studententity.setRole(this.role);
         return studententity;
     }
+
+    // StudentDTO -> StudentRequestDTO
+
+    // public StudentRequestDTO toStudentDTO(StudentDTO student) {
+    // StudentRequestDTO studentRequestDTO = new StudentRequestDTO();
+    // studentRequestDTO.setName(student.getName());
+    // studentRequestDTO.setAddress(student.getAddress());
+    // studentRequestDTO.setEmail(student.getEmail());
+    // return studentRequestDTO;
+
+    // }
+
 }
