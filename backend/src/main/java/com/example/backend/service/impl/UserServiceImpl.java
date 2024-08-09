@@ -8,7 +8,6 @@ import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.backend.dto.UserDTO;
-import com.example.backend.CustomException.CustomException;
 import com.example.backend.dto.RegisterDTO;
 import com.example.backend.entity.Enrollment;
 import com.example.backend.entity.UserEntity;
