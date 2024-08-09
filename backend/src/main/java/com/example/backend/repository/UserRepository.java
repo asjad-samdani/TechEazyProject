@@ -7,6 +7,5 @@ import com.example.backend.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
-
     UserEntity findByEmail(String email);
 }

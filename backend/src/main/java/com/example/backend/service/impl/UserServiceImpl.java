@@ -8,6 +8,7 @@ import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.backend.dto.UserDTO;
+import com.example.backend.CustomException.CustomException;
 import com.example.backend.dto.RegisterDTO;
 import com.example.backend.entity.Enrollment;
 import com.example.backend.entity.UserEntity;
@@ -27,7 +28,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO createStudent(RegisterDTO req) throws BadRequestException {
 
-        if (Objects.equals(req.getRole(), "admin") && req.getSubject_ids().size() > 0) {
+        UserEntity password = studrepo.findByEmail(req.getEmail());
+        if (password != null) {
+            throw new BadRequestException("Email already in use");
+        }
+
+        if (Objects.equals(req.getRole(), "admin") && req.getSubject_ids().size() > 0)
+
+        {
             throw new BadRequestException("Admin cannot be enrolled for subjects");
         }
         // create the student -> student id
@@ -49,7 +57,9 @@ public class UserServiceImpl implements UserService {
 
         enrollRepository.saveAll(enrollments);
 
-        return GetStudentByID(userEntity.getId());
+        return
+
+        GetStudentByID(userEntity.getId());
     }
 
     @Override

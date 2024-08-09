@@ -31,7 +31,6 @@ public class AuthServiceImpl implements AuthSevice {
 
         // 1. Validate email
         UserEntity student = studentRepository.findByEmail(loginReq.getEmail());
-
         if (student == null || student.getId() == null) {
             throw new CustomException("Invalid email", 401);
         }
